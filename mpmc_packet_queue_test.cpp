@@ -1,4 +1,4 @@
-// g++ mpmc_packet_queue_test.cpp -lgtest -lgtest_main -std=c++20  -lpthread
+// g++ mpmc_packet_queue_test.cpp -lgtest -lgtest_main -std=c++17  -lpthread
 
 
 #include <gtest/gtest.h>
@@ -465,7 +465,6 @@ TEST_F(MPMC_PacketQueueTest, BatchOperationsMultiThreaded) {
 TEST_F(MPMC_PacketQueueTest, MemoryOrderingTest) {
     // Test for proper memory ordering under high contention
     constexpr size_t iterations = 1000;
-    // constexpr size_t num_threads = std::thread::hardware_concurrency(); // anand
     size_t num_threads = std::thread::hardware_concurrency();
     
     for (size_t iter = 0; iter < iterations; ++iter) {

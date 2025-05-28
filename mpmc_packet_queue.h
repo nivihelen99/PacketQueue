@@ -135,6 +135,8 @@ private:
         
         Slot() : packet(), seq(0) {}
         
+        static_assert(sizeof(Packet) + sizeof(std::atomic<size_t>) <= CACHE_LINE_SIZE, 
+                      "The combined size of Packet and std::atomic<size_t> must not exceed CACHE_LINE_SIZE.");
         // Prevent false sharing by padding
         char padding[CACHE_LINE_SIZE - sizeof(Packet) - sizeof(std::atomic<size_t>)];
     };

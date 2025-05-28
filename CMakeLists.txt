@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Add optimization flags
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -march=native --std=c++20")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -march=native --std=c++17")
 
 # Find Google Test
 find_package(GTest REQUIRED)
