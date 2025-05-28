@@ -66,11 +66,10 @@ namespace my_std {
             : data_(ptr), size_(count) {
             if constexpr (Extent != dynamic_extent) {
                 if (count != Extent) {
-                    // This scenario would typically be a compile-time error for std::span
-                    // if the count is known at compile time and doesn't match the static extent.
-                    // For runtime count, it's a runtime error.
-                    // For simplicity, we assume correct usage or rely on static_asserts in callers
-                    // or other constructors that enforce static extent matching.
+                    // For std::span, if 'count' were a constexpr mismatch, it would be a compile error.
+                    // For a runtime 'count', this is a runtime violation.
+                    // Use assert to catch this in debug builds.
+                    assert(count == Extent && "Runtime count must match static Extent for my_std::span");
                 }
             }
         }
