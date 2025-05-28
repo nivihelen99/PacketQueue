@@ -406,7 +406,7 @@ queue.get_stats().contention_events.load()
 
 ## License
 
-This implementation is provided under the MIT License. See LICENSE file for details.
+
 
 ## Contributing
 
